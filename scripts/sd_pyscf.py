@@ -28,12 +28,13 @@ def steepest_descent(f, x0, fp, s0=0.2):
     x = x0
     s = s0
     fpx0 = fp(x0)
-    for _ in range(10):
+    for _ in range(20):
         print(s)
         x = numpy.array(x0) - s * numpy.array(fpx0)
         fx = f(x)
         fpx = fp(x)
-        s = numpy.vdot(x - x0, fpx-fpx0) / numpy.linalg.norm(fpx0) ** 2
+        s = (numpy.vdot(x - x0, fpx - fpx0) /
+             (numpy.linalg.norm(fpx - fpx0) ** 2 + numpy.finfo(float).eps))
         x0 = numpy.array(x)
         fpx0 = numpy.array(fpx)
         print(fx)
