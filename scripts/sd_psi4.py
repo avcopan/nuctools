@@ -55,7 +55,7 @@ geom = partial(zip, ('n', 'n'))
 e_ = compose(partial(energy, basis), geom)
 g_ = compose(partial(gradient, basis), geom)
 
-x = nuctools.steepest_descent(f=e_, x0=r0, g=g_, gtol=1e-6)
+x = nuctools.steepest_descent(f=e_, x0=r0, g=g_, s0=1e-3, gtol=1e-6)
 
 print(x)
 print(numpy.linalg.norm(x[1] - x[0]))

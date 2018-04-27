@@ -33,7 +33,7 @@ e_ = partial(energy, basis, labels)
 g_ = partial(gradient, basis, labels)
 r0 = ((0., 0., -1.), (0., 0., 1.))
 
-x = nuctools.steepest_descent(f=e_, x0=r0, g=g_, gtol=1e-6)
+x = nuctools.steepest_descent(f=e_, x0=r0, g=g_, gtol=1e-6, s0=1e-3)
 
 print(x)
 print(numpy.linalg.norm(x[1] - x[0]))

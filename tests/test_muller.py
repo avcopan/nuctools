@@ -6,9 +6,9 @@ P1 = (-0.558, +1.442)
 P2 = (+0.623, +0.028)
 P3 = (-0.050, +0.467)
 
-E1 = -146.69948920058778
-E2 = -108.16665005353303
-E3 = -80.76774924875772
+F1 = -146.69948920058778
+F2 = -108.16665005353303
+F3 = -80.76774924875772
 
 G1 = [-1.87353828849268e-04,  2.04493894713679e-01]
 G2 = [-0.28214371532097, -0.1904339081248]
@@ -22,13 +22,13 @@ H3 = [[239.68935029003293,  151.39774283167137],
       [151.39774283167137, 1462.4043557569194]]
 
 
-def test__e():
-    e1 = nuctools.muller.e(P1)
-    e2 = nuctools.muller.e(P2)
-    e3 = nuctools.muller.e(P3)
-    assert_almost_equal(e1, E1, decimal=13)
-    assert_almost_equal(e2, E2, decimal=13)
-    assert_almost_equal(e3, E3, decimal=13)
+def test__f():
+    f1 = nuctools.muller.f(P1)
+    f2 = nuctools.muller.f(P2)
+    f3 = nuctools.muller.f(P3)
+    assert_almost_equal(f1, F1, decimal=13)
+    assert_almost_equal(f2, F2, decimal=13)
+    assert_almost_equal(f3, F3, decimal=13)
 
 
 def test__g():

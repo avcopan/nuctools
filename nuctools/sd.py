@@ -2,7 +2,7 @@ import numpy
 import warnings
 
 
-def steepest_descent(f, x0, g, s0=0.2, gtol=1e-5, maxiter=50):
+def steepest_descent(f, x0, g, s0, gtol=1e-5, maxiter=50):
     x = x0
     s = s0
     gx0 = g(x0)

@@ -8,19 +8,19 @@ C = numpy.array([[[-1, 0], [0, -10]], [[-1, 0], [0, -10]],
                  [[-6.5, 5.5], [5.5, -6.5]], [[0.7, 0.3], [0.3, 0.7]]])
 
 
-def e(x):
-    fs = starmap(_exponential_quadratic_function, zip(A, B, C))
-    return sum(f(x) for f in fs)
+def f(x):
+    eqfs = starmap(_exponential_quadratic_function, zip(A, B, C))
+    return sum(eqf(x) for eqf in eqfs)
 
 
 def g(x):
-    fs = starmap(_exponential_quadratic_gradient, zip(A, B, C))
-    return sum(f(x) for f in fs)
+    eqgs = starmap(_exponential_quadratic_gradient, zip(A, B, C))
+    return sum(eqg(x) for eqg in eqgs)
 
 
 def h(x):
-    fs = starmap(_exponential_quadratic_hessian, zip(A, B, C))
-    return sum(f(x) for f in fs)
+    eqhs = starmap(_exponential_quadratic_hessian, zip(A, B, C))
+    return sum(eqh(x) for eqh in eqhs)
 
 
 def _exponential_quadratic_function(a, b, c):
