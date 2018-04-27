@@ -30,7 +30,8 @@ def exponential_quadratic(a, b, c):
 
     def _f(x):
         dx = x - b
-        return a * numpy.exp(numpy.dot(dx, numpy.dot(c, dx)))
+        cdx = numpy.dot(c, dx)
+        return a * numpy.exp(numpy.dot(dx, cdx))
 
     return _f
 
@@ -39,8 +40,19 @@ def exponential_quadratic_grad(a, b, c):
 
     def _f(x):
         dx = x - b
-        return (2 * a * numpy.exp(numpy.dot(dx, numpy.dot(c, dx))) *
-                numpy.dot(c, dx))
+        cdx = numpy.dot(c, dx)
+        return 2 * a * numpy.exp(numpy.dot(dx, cdx)) * cdx
+
+    return _f
+
+
+def exponential_quadratic_hess(a, b, c):
+
+    def _f(x):
+        dx = x - b
+        cdx = numpy.dot(c, dx)
+        return (2 * a * numpy.exp(numpy.dot(dx, cdx)) * c +
+                4 * a * numpy.exp(numpy.dot(dx, cdx)) * numpy.outer(cdx, cdx))
 
     return _f
 
@@ -60,6 +72,15 @@ def muller_function_grad(x):
     c = numpy.array([[[-1, 0], [0, -10]], [[-1, 0], [0, -10]],
                      [[-6.5, 5.5], [5.5, -6.5]], [[0.7, 0.3], [0.3, 0.7]]])
     fs = starmap(exponential_quadratic_grad, zip(a, b, c))
+    return sum(f(x) for f in fs)
+
+
+def muller_function_hess(x):
+    a = numpy.array([-200, -100, -170, 15])
+    b = numpy.array([[1, 0], [0, 0.5], [-0.5, 1.5], [-1, 1]])
+    c = numpy.array([[[-1, 0], [0, -10]], [[-1, 0], [0, -10]],
+                     [[-6.5, 5.5], [5.5, -6.5]], [[0.7, 0.3], [0.3, 0.7]]])
+    fs = starmap(exponential_quadratic_hess, zip(a, b, c))
     return sum(f(x) for f in fs)
 
 
@@ -91,3 +112,22 @@ dm3 = central_difference(muller_function, (-0.050, +0.467), step=1e-5, npts=9)
 print(dm1)
 print(dm2)
 print(dm3)
+
+h1 = muller_function_hess((-0.558, +1.442))
+h2 = muller_function_hess((+0.623, +0.028))
+h3 = muller_function_hess((-0.050, +0.467))
+
+print(h1)
+print(h2)
+print(h3)
+
+d2m1 = central_difference(muller_function, (-0.558, +1.442), step=1e-5, npts=9,
+                          nder=2)
+d2m2 = central_difference(muller_function, (+0.623, +0.028), step=1e-5, npts=9,
+                          nder=2)
+d2m3 = central_difference(muller_function, (-0.050, +0.467), step=1e-5, npts=9,
+                          nder=2)
+
+print(d2m1)
+print(d2m2)
+print(d2m3)
