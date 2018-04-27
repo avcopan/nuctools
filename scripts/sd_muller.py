@@ -1,4 +1,5 @@
 import numpy
+import nuctools
 import scipy.misc
 from itertools import starmap
 
@@ -131,3 +132,23 @@ d2m3 = central_difference(muller_function, (-0.050, +0.467), step=1e-5, npts=9,
 print(d2m1)
 print(d2m2)
 print(d2m3)
+
+e1 = nuctools.muller.e((-0.558, +1.442))
+e2 = nuctools.muller.e((+0.623, +0.028))
+e3 = nuctools.muller.e((-0.050, +0.467))
+g1 = nuctools.muller.g((-0.558, +1.442))
+g2 = nuctools.muller.g((+0.623, +0.028))
+g3 = nuctools.muller.g((-0.050, +0.467))
+h1 = nuctools.muller.h((-0.558, +1.442))
+h2 = nuctools.muller.h((+0.623, +0.028))
+h3 = nuctools.muller.h((-0.050, +0.467))
+numpy.set_printoptions(precision=14)
+print(repr(e1))
+print(repr(e2))
+print(repr(e3))
+print(repr(g1))
+print(repr(g2))
+print(repr(g3))
+print(repr(h1))
+print(repr(h2))
+print(repr(h3))
