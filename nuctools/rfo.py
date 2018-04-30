@@ -4,37 +4,30 @@ import warnings
 
 
 def cerjan_miller(f, x0, g, h, order=0, gtol=1e-5, maxiter=50):
-    x = x0
-    dim = len(x)
-    order = int(order)
     converged = False
     for iteration in range(maxiter):
-        fx = f(x)
-        gx = g(x)
-        hx = h(x)
+        f0 = f(x0)
+        g0 = g(x0)
+        h0 = h(x0)
 
-        gmax = numpy.amax(numpy.abs(gx))
+        l, v = scipy.linalg.eigh(h0)
 
-        lm, v_lm = scipy.linalg.eigh(hx)
+        gmax = numpy.amax(numpy.abs(g0))
+        lorder = int(numpy.sum(l < gtol))
 
-        gx_lm = numpy.dot(gx, v_lm)
-        sc_lm = numpy.array([-1.] * order + [+1.] * (dim - order))
+        lg0 = numpy.dot(g0, v)
+        ld0 = 1./2 * (numpy.abs(l) + numpy.sqrt(l**2 + 4. * lg0**2))
+        ld0[:order] *= -1.
+        ldx = - lg0 / ld0
+        dx = numpy.dot(v, ldx)
 
-        pc_lm = 1./2 * sc_lm * (numpy.abs(lm) +
-                                numpy.sqrt(lm**2 + 4 * gx_lm**2))
+        x = x0 + dx
+        x0 = x
 
-        dx_lm = - gx_lm / pc_lm
+        converged = gmax < gtol and order == lorder
 
-        dx = numpy.dot(v_lm, dx_lm)
-
-        x += dx
-
-        nreac = int(numpy.sum(lm < 10 * gtol))
-
-        converged = gmax < gtol and nreac == order
-
-        info = {'niter': iteration + 1, 'f(x)': fx, 'gmax': gmax, 'nreac':
-                nreac, 'conv_status': converged}
+        info = {'niter': iteration + 1, 'f(x)': f0, 'gmax': gmax,
+                'lorder': lorder, 'conv_status': converged}
         print(info)
 
         if converged:
