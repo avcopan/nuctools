@@ -1,5 +1,5 @@
 import nuctools
-from nuctools.muller import f, g, h
+from nuctools.surfaces.mullerbrown import f, g, h
 
 # minima
 p1 = (-0.5, +1.4)

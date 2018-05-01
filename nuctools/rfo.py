@@ -3,7 +3,8 @@ import scipy.linalg
 import warnings
 
 
-def cerjan_miller(f, x0, g, h, order=0, gtol=1e-5, maxiter=50):
+def rational_function_optimization(f, x0, g, h, smax, order=0, gtol=1e-5,
+                                   maxiter=50):
     converged = False
     for iteration in range(maxiter):
         f0 = f(x0)
@@ -20,6 +21,9 @@ def cerjan_miller(f, x0, g, h, order=0, gtol=1e-5, maxiter=50):
         ld0[:order] *= -1.
         ldx = - lg0 / ld0
         dx = numpy.dot(v, ldx)
+
+        if scipy.linalg.norm(dx) > smax:
+            dx = smax * dx / scipy.linalg.norm(dx)
 
         x = x0 + dx
         x0 = x

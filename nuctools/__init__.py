@@ -1,7 +1,8 @@
-from . import muller
+from . import surfaces
 from .sd import steepest_descent
 from .nr import newton_raphson
-from .rfo import cerjan_miller
+from .rfo import rational_function_optimization
 
 
-__all__ = ['muller', 'steepest_descent', 'newton_raphson', 'cerjan_miller']
+__all__ = ['surfaces', 'steepest_descent', 'newton_raphson',
+           'rational_function_optimization']
