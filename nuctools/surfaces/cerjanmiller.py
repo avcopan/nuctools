@@ -1,20 +1,14 @@
 import numpy
 
-A = 1.
-B = 1.
-C = 1.
-
 
 def f(z):
     x, y = z
-    return (A - B * y) * x ** 2 * numpy.exp(-x ** 2) + C / 2. * y ** 2
+    return (1. - y) * x ** 2 * numpy.exp(-x ** 2) + 1 / 2. * y ** 2
 
 
 def g(z):
     gx = dfdx(z)
     gy = dfdy(z)
-    print(gx)
-    print(gy)
     return numpy.array([gx, gy])
 
 
@@ -22,36 +16,33 @@ def h(z):
     hxx = d2fdx2(z)
     hxy = d2fdxdy(z)
     hyy = d2fdy2(z)
-    print(hxx)
-    print(hxy)
-    print(hyy)
     return numpy.array([[hxx, hxy], [hxy, hyy]])
 
 
 def dfdx(z):
     x, y = z
-    return 2 * (A - B * y) * x * (1. - x ** 2) * numpy.exp(-x ** 2)
+    return 2 * (1. - y) * x * (1. - x ** 2) * numpy.exp(-x ** 2)
 
 
 def dfdy(z):
     x, y = z
-    return y * C - B * x ** 2 * numpy.exp(-x ** 2)
+    return y - x ** 2 * numpy.exp(-x ** 2)
 
 
 def d2fdx2(z):
     x, y = z
-    return (2 * (A - B * y) * (1. - 5. * x ** 2 + 2. * x ** 4) *
+    return (2 * (1. - y) * (1. - 5. * x ** 2 + 2. * x ** 4) *
             numpy.exp(-x ** 2))
 
 
 def d2fdxdy(z):
     x, y = z
-    return -2 * B * x * (1. - x ** 2) * numpy.exp(-x ** 2)
+    return -2 * x * (1. - x ** 2) * numpy.exp(-x ** 2)
 
 
 def d2fdy2(z):
     x, y = z
-    return C
+    return 1.
 
 
 if __name__ == '__main__':
