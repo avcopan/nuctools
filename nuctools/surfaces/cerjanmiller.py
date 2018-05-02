@@ -3,7 +3,7 @@ import numpy
 
 def f(z):
     x, y = z
-    return (1. - y) * x ** 2 * numpy.exp(-x ** 2) + 1 / 2. * y ** 2
+    return (1. - y ** 2) * x ** 2 * numpy.exp(-x ** 2) + 1 / 2. * y ** 2
 
 
 def g(z):
@@ -21,28 +21,28 @@ def h(z):
 
 def dfdx(z):
     x, y = z
-    return 2 * (1. - y) * x * (1. - x ** 2) * numpy.exp(-x ** 2)
+    return 2 * (1. - y ** 2) * x * (1. - x ** 2) * numpy.exp(-x ** 2)
 
 
 def dfdy(z):
     x, y = z
-    return y - x ** 2 * numpy.exp(-x ** 2)
+    return y * (1. - 2 * x ** 2 * numpy.exp(-x ** 2))
 
 
 def d2fdx2(z):
     x, y = z
-    return (2 * (1. - y) * (1. - 5. * x ** 2 + 2. * x ** 4) *
+    return (2 * (1. - y ** 2) * (1. - 5. * x ** 2 + 2. * x ** 4) *
             numpy.exp(-x ** 2))
 
 
 def d2fdxdy(z):
     x, y = z
-    return -2 * x * (1. - x ** 2) * numpy.exp(-x ** 2)
+    return -4 * y * x * (1. - x ** 2) * numpy.exp(-x ** 2)
 
 
 def d2fdy2(z):
     x, y = z
-    return 1.
+    return 1. - 2 * x ** 2 * numpy.exp(-x ** 2)
 
 
 if __name__ == '__main__':
@@ -52,7 +52,12 @@ if __name__ == '__main__':
     print('vals')
     print(f((.5, .25)))
     print(g((.5, .25)))
+    print(dfdx((.5, .25)))
+    print(dfdy((.5, .25)))
     print(h((.5, .25)))
+    print(d2fdx2((.5, .25)))
+    print(d2fdxdy((.5, .25)))
+    print(d2fdy2((.5, .25)))
 
     def f_(x, y):
         return f((x, y))
