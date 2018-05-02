@@ -1,7 +1,7 @@
 import numpy
 from nuctools.surfaces.cerjanmiller import f, g, h
 
-p = (0.05, 0.1)
+p = (0.1, 0.2)
 
 print(f((1, 0)))
 print(g((1, 0)))
