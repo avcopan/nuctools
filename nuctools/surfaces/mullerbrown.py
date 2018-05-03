@@ -70,3 +70,25 @@ def _insert(a, ax):
     ndim = numpy.ndim(a) + 1
     ix = (None if i in ax else slice(None) for i in range(ndim))
     return a[tuple(ix)]
+
+
+
+if __name__ == '__main__':
+    import matplotlib.pyplot as pyplot
+
+    # minima
+    x1 = [-0.55822363, 1.44172584]
+    x2 = [-0.05001082, 0.4666941]
+    x3 = [0.6234994, 0.02803776]
+    # saddle points
+    x12 = [-0.82200156, 0.6243128]
+    x23 = [0.21248658, 0.29298833]
+
+
+    X = numpy.linspace(-1.25, 0.75)
+    Y = numpy.linspace(-0.25, 2.0)
+    Z = f(numpy.array(numpy.meshgrid(X, Y)))
+
+    pyplot.contour(X, Y, Z, 100)
+    pyplot.scatter(*zip(x1, x12, x2, x23, x3))
+    pyplot.show()

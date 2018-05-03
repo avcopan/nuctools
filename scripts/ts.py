@@ -46,6 +46,9 @@ print(GRD.shape)
 Z = f(GRD)
 print(Z)
 
+for x in (x1, x12, x2, x23, x3):
+    print(x)
+
 pyplot.contour(X, Y, Z, 100)
 pyplot.plot(*zip(*traj12))
 pyplot.plot(*zip(*traj21))
