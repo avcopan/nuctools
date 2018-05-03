@@ -6,6 +6,7 @@ import warnings
 def rational_function_optimization(f, x0, g, h, smax, order=0, gtol=1e-5,
                                    maxiter=50):
     converged = False
+    trajectory = [x0]
     for iteration in range(maxiter):
         f0 = f(x0)
         g0 = g(x0)
@@ -33,6 +34,7 @@ def rational_function_optimization(f, x0, g, h, smax, order=0, gtol=1e-5,
         info = {'niter': iteration + 1, 'f(x)': f0, 'gmax': gmax,
                 'lorder': lorder, 'conv_status': converged}
         print(info)
+        trajectory.append(x)
 
         if converged:
             break
@@ -40,4 +42,4 @@ def rational_function_optimization(f, x0, g, h, smax, order=0, gtol=1e-5,
     if not converged:
         warnings.warn("Did not converge!")
 
-    return x
+    return x, trajectory
