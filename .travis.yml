@@ -6,6 +6,7 @@ python:
     - "3.6"
 
 install:
+    - pip install --user codecov
     - pip install pytest-cov
     - pip install -e .
 
@@ -13,4 +14,4 @@ script:
     - pytest --cov=./
 
 after_success:
-    - codecov --token=df7f6710-c803-4ea6-a1c1-1f00cd1d4073
+    - codecov -t df7f6710-c803-4ea6-a1c1-1f00cd1d4073
