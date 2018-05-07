@@ -1,2 +1,6 @@
 codecov:
   token: 99226c5e-6d39-4bf8-891e-a0a92b11b3b3
+
+ignore:
+    - "scripts"
+    - "setup.py"
