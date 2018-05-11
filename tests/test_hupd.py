@@ -1,11 +1,11 @@
+import nuctools
+
 import numpy
 import pytest
 
 from hypothesis import given
 from hypothesis.strategies import floats
 from hypothesis.extra.numpy import arrays
-
-import nuctools
 
 
 @given(arrays('float64', shape=(2,), elements=floats(-1., 1.5)),
