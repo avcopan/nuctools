@@ -3,4 +3,5 @@ codecov:
 
 ignore:
     - "scripts"
+    - "tests"
     - "setup.py"
