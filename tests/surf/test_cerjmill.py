@@ -11,15 +11,15 @@ H = [[-0.1825314335323605, -0.2920502936517768],
 
 
 def test__f():
-    f = nuctools.surfaces.cerjanmiller.f(P)
+    f = nuctools.surf.cerjmill.f(P)
     assert_almost_equal(f, F, decimal=13)
 
 
 def test__g():
-    g = nuctools.surfaces.cerjanmiller.g(P)
+    g = nuctools.surf.cerjmill.g(P)
     assert_almost_equal(g, G, decimal=13)
 
 
 def test__h():
-    h = nuctools.surfaces.cerjanmiller.h(P)
+    h = nuctools.surf.cerjmill.h(P)
     assert_almost_equal(h, H, decimal=13)

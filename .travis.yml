@@ -6,7 +6,7 @@ python:
     - "3.6"
 
 install:
-    - pip install codecov pytest pytest-cov
+    - pip install codecov pytest pytest-cov hypothesis
     - pip install -e .
 
 script:

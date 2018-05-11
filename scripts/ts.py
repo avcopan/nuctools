@@ -1,6 +1,6 @@
 import numpy
 from nuctools.opt import saddle
-from nuctools.surfaces.mullerbrown import f, g, h
+from nuctools.surf.mullbrow import f, g, h
 
 # minima
 p1 = numpy.array([-0.5, +1.4])

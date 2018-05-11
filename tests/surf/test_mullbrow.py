@@ -23,27 +23,27 @@ H3 = [[239.68935029003293,  151.39774283167137],
 
 
 def test__f():
-    f1 = nuctools.surfaces.mullerbrown.f(P1)
-    f2 = nuctools.surfaces.mullerbrown.f(P2)
-    f3 = nuctools.surfaces.mullerbrown.f(P3)
+    f1 = nuctools.surf.mullbrow.f(P1)
+    f2 = nuctools.surf.mullbrow.f(P2)
+    f3 = nuctools.surf.mullbrow.f(P3)
     assert_almost_equal(f1, F1, decimal=13)
     assert_almost_equal(f2, F2, decimal=13)
     assert_almost_equal(f3, F3, decimal=13)
 
 
 def test__g():
-    g1 = nuctools.surfaces.mullerbrown.g(P1)
-    g2 = nuctools.surfaces.mullerbrown.g(P2)
-    g3 = nuctools.surfaces.mullerbrown.g(P3)
+    g1 = nuctools.surf.mullbrow.g(P1)
+    g2 = nuctools.surf.mullbrow.g(P2)
+    g3 = nuctools.surf.mullbrow.g(P3)
     assert_almost_equal(g1, G1, decimal=13)
     assert_almost_equal(g2, G2, decimal=13)
     assert_almost_equal(g3, G3, decimal=13)
 
 
 def test__h():
-    h1 = nuctools.surfaces.mullerbrown.h(P1)
-    h2 = nuctools.surfaces.mullerbrown.h(P2)
-    h3 = nuctools.surfaces.mullerbrown.h(P3)
+    h1 = nuctools.surf.mullbrow.h(P1)
+    h2 = nuctools.surf.mullbrow.h(P2)
+    h3 = nuctools.surf.mullbrow.h(P3)
     assert_almost_equal(h1, H1, decimal=13)
     assert_almost_equal(h2, H2, decimal=13)
     assert_almost_equal(h3, H3, decimal=13)
