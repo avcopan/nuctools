@@ -20,7 +20,7 @@ def steepest_descent(lin, x0, s0, smax, gtol=1e-5, maxiter=50, print_info=True):
     f0, g0 = lin(x0)
     x = x0 - s0 * g0
 
-    for iteration in range(1, maxiter+1):
+    for iteration in range(1, maxiter + 1):
         f, g = lin(x)
 
         gmax = numpy.amax(numpy.abs(g))

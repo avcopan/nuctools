@@ -50,7 +50,7 @@ def _exponential_quadratic_hessian(a, b, c):
         dx = x - _cast(b, 0, numpy.ndim(x))
         cdx = numpy.tensordot(c, dx, axes=(1, 0))
         return (2 * a * numpy.exp(numpy.sum(dx * cdx, axis=0)) *
-                (_cast(c, (0, 1), numpy.ndim(x)+1)
+                (_cast(c, (0, 1), numpy.ndim(x) + 1)
                  + 2 * _insert(cdx, 1) * _insert(cdx, 0)))
 
     return _f
