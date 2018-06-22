@@ -6,6 +6,15 @@ python:
     - "3.6"
 
 install:
+    - git clone https://github.com/sunqm/pyscf
+    - cd pyscf/pyscf/lib
+    - mkdir build
+    - cd build
+    - cmake ..
+    - make
+    - cd ../..
+    - export PYTHONPATH=$PYTHONPATH:`pwd`
+    - cd ..
     - pip install codecov pytest pytest-cov hypothesis
     - pip install -e .
 
