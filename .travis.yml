@@ -10,13 +10,13 @@ install:
     - export MYPATH=`pwd`
     - cd ..
     - git clone https://github.com/sunqm/pyscf
-    - cd pyscf/pyscf/lib
+    - cd pyscf/
+    - export PYTHONPATH=$PYTHONPATH:`pwd`
+    - cd pyscf/lib
     - mkdir build
     - cd build
     - cmake ..
     - make
-    - cd ../..
-    - export PYTHONPATH=$PYTHONPATH:`pwd`
     - cd $MYPATH
     - pip install codecov pytest pytest-cov hypothesis
     - pip install -e .
