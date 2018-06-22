@@ -7,6 +7,7 @@ python:
 
 install:
     - sudo apt-get install libblas-dev liblapack-dev
+    - export MYPATH=`pwd`
     - cd ..
     - git clone https://github.com/sunqm/pyscf
     - cd pyscf/pyscf/lib
@@ -16,7 +17,7 @@ install:
     - make
     - cd ../..
     - export PYTHONPATH=$PYTHONPATH:`pwd`
-    - cd ../nuctools
+    - cd $MYPATH
     - pip install codecov pytest pytest-cov hypothesis
     - pip install -e .
 
