@@ -7,6 +7,7 @@ python:
 
 install:
     - sudo apt-get install libblas-dev liblapack-dev
+    - pip install codecov pytest pytest-cov hypothesis numpy scipy h5py
     - export MYPATH=`pwd`
     - cd ..
     - git clone https://github.com/sunqm/pyscf
@@ -18,7 +19,6 @@ install:
     - cmake ..
     - make
     - cd $MYPATH
-    - pip install codecov pytest pytest-cov hypothesis
     - pip install -e .
 
 script:
