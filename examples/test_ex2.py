@@ -13,3 +13,7 @@ def test__optimize_quasi_newton():
         lin=lin, x0=x0, hup=nuctools.hupd.ms, smax=0.3, gtol=1e-8)
     print(x)
     print(len(traj))
+
+
+if __name__ == '__main__':
+    test__optimize_quasi_newton()

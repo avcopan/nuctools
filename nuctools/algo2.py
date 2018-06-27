@@ -48,8 +48,8 @@ def optimize_gradient_descent(lin, x0, smax=0.3, gtol=1e-5, maxiter=50,
         converged = gmax < gtol
 
         if print_info:
-            'iteration {:d} gmax={:.1e} f(x)={:15.10e}'.format(
-                iteration, f, gmax)
+            print('iteration {:d} gmax={:.1e} f(x)={:15.10e}'
+                  .format(iteration, gmax, f))
 
         if converged:
             break
@@ -107,8 +107,8 @@ def optimize_quasi_newton(lin, x0, hup, smax=0.3, gtol=1e-5,
         converged = gmax < gtol
 
         if print_info:
-            'iteration {:d} gmax={:.1e} f(x)={:15.10e}'.format(
-                iteration, f, gmax)
+            print('iteration {:d} gmax={:.1e} f(x)={:15.10e}'
+                  .format(iteration, gmax, f))
 
         if converged:
             break
